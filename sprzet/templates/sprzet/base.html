@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Domino - komputery</title>
+    <meta name="Author" content="domino" />
+    <meta name="Copyright" content="2017 domino company" />
+    <meta name="Language" content="pl" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&subset=latin-ext" type="text/css" />
+    <link rel="stylesheet" href="{% static 'sprzet/style.css' %}" type="text/css" /> 
+  </head>
+  <body>
+
+    <div class="navbar navbar-default">
+      <div class="container-fluid">
+	<div class="navbar-header">
+	  <a class="navbar-brand" href="#">Machines</a>
+	</div>
+	<div class="navbar navbar-left">
+	  <ul class="nav navbar-nav">
+	    <li><a href="{% url 'index' %}">host</a></li>
+	    <li><a href="{% url 'serwis-index' %}">serwisy</a></li>
+	  </ul>
+	</div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+	<div class="col-md-12">
+	  {% block body %}{% endblock %}
+	</div>
+      </div>
+    </div>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

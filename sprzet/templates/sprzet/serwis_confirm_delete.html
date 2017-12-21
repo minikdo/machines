@@ -1,0 +1,17 @@
+{% extends 'sprzet/base.html' %}
+{% block body %}
+{% load crispy_forms_tags %}
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="well">
+      <form action="" method="post">{% csrf_token %}
+        <p>Czy usunąć "{{ object }}"?</p>
+        <input name="komp_id" type="hidden" value="{{ object.komp.pk }}"/>
+        <input type="submit" class="btn btn-danger" value="Potwiedź" />
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

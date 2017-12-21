@@ -1,0 +1,70 @@
+{% extends 'sprzet/base.html' %}
+{% block body %}
+
+<h1>komputer: {{ kompy.name }}</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th><td>{{ kompy.name }}</td>
+    <th>FQDN</th><td>{{ kompy.FQDN }}</td>
+  </tr>
+  <tr>
+    <th>Datetime</th><td>{{ kompy.datetime }}</td>
+    <th>Form</th><td>{{ kompy.form }}</td>
+  </tr>
+  <tr>
+    <th>Bios</th><td>{{ kompy.bios }}</td>
+    <th>Prod</th><td>{{ kompy.prod }}</td>
+  </tr>
+  <tr>
+    <th>Vendor</th><td>{{ kompy.vendor }}</td>
+    <th>OS</th><td>{{ kompy.OS }}</td>
+  </tr>
+  <tr>
+    <th>Kernel</th><td>{{ kompy.kernel }}</td>
+    <th>CPU</th><td>{{ kompy.CPU }}</td>
+  </tr>
+  <tr>
+    <th>Cores</th><td>{{ kompy.cores }}</td>
+    <th>Arch</th><td>{{ kompy.arch }}</td>
+  </tr>
+  <tr>
+    <th>Mem</th><td>{{ kompy.mem }}</td>
+    <th>HDD</th><td>{{ kompy.HDD }}</td>
+  </tr>
+  <tr>
+    <th>Disk</th><td>{{ kompy.disk }}</td>
+    <th>Diskfree</th><td>{{ kompy.diskfree }}</td>
+  </tr>
+  <tr>
+    <th>IPs</th><td>{{ kompy.IPs }}</td>
+    <th>Gateway</th><td>{{ kompy.gateway }}</td>
+  </tr>
+  <tr>
+    <th>Gate Iface</th><td>{{ kompy.gate_iface }}</td>
+  </tr>
+</table>
+
+<a href="{% url 'serwis-create' %}?komp_id={{ kompy.pk }}"><button class="btn btn-success" style="margin-bottom: 10px;"><span class="glyphicon glyphicon-plus"></span> dodaj czynność serwisową</button></a>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Data</th>
+    <th>Czynność</th>
+    <th></th>
+  </tr>
+{% for serwis in  kompy.serwis_set.all %}
+  <tr>
+    <td>{{ serwis.pk }}</td>
+    <td>{{ serwis.data }}</td>
+    <td>{{ serwis.czynnosc }}</td>
+    <td>
+      <a href="{% url 'serwis-update' serwis.pk %}"><button class="btn btn-primary">edytuj</button></a>
+      <a href="{% url 'serwis-delete' serwis.pk %}"><button class="btn btn-warning">usuń</button></a>
+    </td>
+  </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

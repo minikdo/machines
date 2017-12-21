@@ -1,0 +1,16 @@
+{% extends 'sprzet/base.html' %}
+{% block body %}
+{% load crispy_forms_tags %}
+
+<div class="row">
+  <div class="col-md-4">
+    <h2>Zmień czynność serwisową</h2>
+    <form action="" method="post">
+      {{ form|crispy }}
+      {% csrf_token %}
+      <button class="btn btn-default">Dodaj</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

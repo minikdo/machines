@@ -1,0 +1,54 @@
+{% extends 'sprzet/base.html' %}
+{% block body %}
+
+<h1>Lista komputerów</h1>
+
+{% if kompy  %}
+<table class="table table-striped">
+  <tr class="warning">
+    <th>ID</th>
+    <th>Name</th>
+    <th>Datetime</th>
+    <th>Form</th>
+    <th>Bios</th>
+    <th>Prod</th>
+    <th>Vendor</th>
+    <th>OS</th>
+    <th>Kernel</th>
+    <th>CPU</th>
+    <th>Cores</th>
+    <th>Arch</th>
+    <th>Mem</th>
+    <th>HDD</th>
+    <th>Disk</th>
+    <th>Diskfree</th>
+    <th>IPs</th>
+    <th>Gateway</th>
+    <th>Gate Iface</th>
+  </tr>
+  {% for komp in kompy %}
+  <tr>
+    <td><a href="{{ komp.pk }}/">{{ komp.pk }}</a></td>
+    <td>{{ komp.name }}</td>
+    <td>{{ komp.datetime }}</td>
+    <td>{{ komp.form }}</td>
+    <td>{{ komp.bios }}</td>
+    <td>{{ komp.prod }}</td>
+    <td>{{ komp.vendor }}</td>
+    <td>{{ komp.OS }}</td>
+    <td>{{ komp.kernel }}</td>
+    <td>{{ komp.CPU }}</td>
+    <td>{{ komp.cores }}</td>
+    <td>{{ komp.arch }}</td>
+    <td>{{ komp.mem }}</td>
+    <td>{{ komp.HDD }}</td>
+    <td>{{ komp.disk }}</td>
+    <td>{{ komp.diskfree }}</td>
+    <td>{{ komp.IPs }}</td>
+    <td>{{ komp.gateway }}</td>
+    <td>{{ komp.gate_iface }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

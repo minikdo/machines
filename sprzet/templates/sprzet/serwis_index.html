@@ -1,0 +1,19 @@
+{% extends 'sprzet/base.html' %}
+{% block body %}
+
+<h1>Lista czynności serwisowych</h1>
+
+{% if serwisy  %}
+
+<table class="table table-striped">
+  {% for serwis in serwisy %}
+  <tr>
+    <td><a href="{% url 'detail' serwis.komp.pk %}">{{ serwis.pk }}</a></td>
+    <td>{{ serwis.komp }}</td>
+    <td>{{ serwis.data }}</td>
+    <td>{{ serwis.czynnosc }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+{% endblock %}
