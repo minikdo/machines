@@ -62,3 +62,10 @@ class SprzetTyp(models.Model):
         return self.nazwa
 
 
+class KompySprzet(models.Model):
+    komp = models.ForeignKey('Kompy', on_delete=models.CASCADE)
+    sprzet = models.ForeignKey('Sprzet', on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'pk': self.komp_id})
+    

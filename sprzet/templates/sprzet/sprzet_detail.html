@@ -1,0 +1,36 @@
+{% extends 'sprzet/base.html' %}
+{% block body %}
+
+<h1>{{ sprzet.typ|capfirst }} {{ sprzet.nazwa }}</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>data</th>
+    <td>{{ sprzet.data }}</td>
+  </tr>
+  <tr>
+    <th>typ</th>
+    <td>{{ sprzet.typ }}</td>
+  </tr>
+  <tr>
+    <th>nazwa</th>
+    <td>{{ sprzet.nazwa }}</td>
+  </tr>
+  <tr>
+    <th>cena</th>
+    <td>{{ sprzet.cena }}</td>
+  </tr>
+  <tr>
+    <th>firma</th>
+    <td>{{ sprzet.firma }}</td>
+  </tr>
+  <tr>
+    <th>numer faktury</th>
+    <td>{{ sprzet.numer }}</td>
+  </tr>
+</table>
+
+<a href="{% url 'sprzet-update' sprzet.pk %}"><button class="btn btn-primary">edytuj</button></a>
+<a href="{% url 'sprzet-delete' sprzet.pk %}"><button class="btn btn-warning">usuń</button></a>
+
+{% endblock %}

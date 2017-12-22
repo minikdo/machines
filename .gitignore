@@ -3,3 +3,10 @@ machines/__pycache__/
 komputery/__pycache__/
 sprzet/migrations/
 __pycache__/
+\#*#
+[#]*[#]
+.[#]*[#]
+*~
+.\#*
+\#*\#
+.db_migration/*

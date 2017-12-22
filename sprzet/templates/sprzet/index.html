@@ -27,8 +27,8 @@
   </tr>
   {% for komp in kompy %}
   <tr>
-    <td><a href="{{ komp.pk }}/">{{ komp.pk }}</a></td>
-    <td>{{ komp.name }}</td>
+    <td>{{ komp.pk }}</td>
+    <td><a href="{% url 'detail' komp.pk %}">{{ komp.name }} <span class="glyphicon glyphicon-search"></span></a></td>
     <td class="nowrap">{{ komp.datetime }}</td>
     <td>{{ komp.form }}</td>
     <td>{{ komp.bios }}</td>

@@ -16,6 +16,7 @@
     <th>cena</th>
     <th>firma</th>
     <th>numer</th>
+    <th>komputer</th>
     <th></th>
   {% for item in sprzet %}
   <tr>
@@ -26,6 +27,7 @@
     <td>{{ item.cena }}</td>
     <td>{{ item.firma }}</td>
     <td>{{ item.numer }}</td>
+    <td>{{ kompysprzet_set.all.komp }}</td>
     <td>
       <a href="{% url 'sprzet-update' item.pk %}"><button class="btn btn-primary">edytuj</button></a>
       <a href="{% url 'sprzet-delete' item.pk %}"><button class="btn btn-warning">usuń</button></a>

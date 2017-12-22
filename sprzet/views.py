@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .models import Kompy, Serwis, Sprzet, SprzetTyp
+from .models import Kompy, Serwis, Sprzet, SprzetTyp, KompySprzet
 from django.urls import reverse_lazy, reverse
 import time
 
@@ -97,3 +97,14 @@ class SprzetDelete(DeleteView):
     model = Sprzet
     success_url = reverse_lazy('sprzet-index')
     
+
+class KompySprzetCreate(CreateView):
+    """
+    Łączenie hostów ze sprzętem
+    """
+    model = KompySprzet
+    fields = ['komp', 'sprzet']
+    
+    def get_initial(self, **kwargs):
+        return {'komp': self.request.GET.get("komp_id", None)}
+
