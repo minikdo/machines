@@ -1,0 +1,40 @@
+{% extends 'sprzet/base.html' %}
+{% block body %}
+
+<h1>Lista sprzętu</h1>
+
+<a href="{% url 'sprzet-create' %}"><button class="btn btn-success" style="margin-bottom: 10px;"><span class="glyphicon glyphicon-plus"></span> dodaj sprzęt</button></a>
+
+{% if sprzet  %}
+
+<table class="table table-striped">
+  <tr>
+    <th>id</th>
+    <th>data </th>
+    <th>typ  </th>
+    <th>nazwa</th>
+    <th>cena</th>
+    <th>firma</th>
+    <th>numer</th>
+    <th></th>
+  {% for item in sprzet %}
+  <tr>
+    <td><a>{{ item.pk }}</a></td>
+    <td>{{ item.data }}</td>
+    <td>{{ item.typ }}</td>
+    <td>{{ item.nazwa }}</td>
+    <td>{{ item.cena }}</td>
+    <td>{{ item.firma }}</td>
+    <td>{{ item.numer }}</td>
+    <td>
+      <a href="{% url 'sprzet-update' item.pk %}"><button class="btn btn-primary">edytuj</button></a>
+      <a href="{% url 'sprzet-delete' item.pk %}"><button class="btn btn-warning">usuń</button></a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+{% include "sprzet/paginator.html" %}
+
+{% endblock %}

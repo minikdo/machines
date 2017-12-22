@@ -8,12 +8,24 @@
 <table class="table table-striped">
   {% for serwis in serwisy %}
   <tr>
-    <td><a href="{% url 'detail' serwis.komp.pk %}">{{ serwis.pk }}</a></td>
-    <td>{{ serwis.komp }}</td>
+    <td>{{ serwis.pk }}</td>
+    <td><a href="{% url 'detail' serwis.komp.pk %}"><span class="glyphicon glyphicon-search"></span></a>{{ serwis.komp }}</td>
     <td>{{ serwis.data }}</td>
-    <td>{{ serwis.czynnosc }}</td>
+    <td>{{ serwis.czynnosc }}
+      {% if serwis.sprzet %}
+      [{{ serwis.sprzet.nazwa }}]
+      {% endif %}
+    </td>
+    <td>
+      <a href="{% url 'serwis-update' serwis.pk %}"><button class="btn btn-primary">edytuj</button></a>
+      <a href="{% url 'serwis-delete' serwis.pk %}"><button class="btn btn-warning">usuń</button></a>
+    </td>
   </tr>
   {% endfor %}
 </table>
+
+{% include "sprzet/paginator.html" %}
+
 {% endif %}
+
 {% endblock %}

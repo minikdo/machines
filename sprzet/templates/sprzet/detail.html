@@ -1,7 +1,7 @@
 {% extends 'sprzet/base.html' %}
 {% block body %}
 
-<h1>komputer: {{ kompy.name }}</h1>
+<h1>Komputer: {{ kompy.name }}</h1>
 
 <table class="table table-striped">
   <tr>
@@ -45,6 +45,8 @@
   </tr>
 </table>
 
+<h1>Czynności serwisowe</h1>
+
 <a href="{% url 'serwis-create' %}?komp_id={{ kompy.pk }}"><button class="btn btn-success" style="margin-bottom: 10px;"><span class="glyphicon glyphicon-plus"></span> dodaj czynność serwisową</button></a>
 
 <table class="table">
@@ -58,7 +60,11 @@
   <tr>
     <td>{{ serwis.pk }}</td>
     <td>{{ serwis.data }}</td>
-    <td>{{ serwis.czynnosc }}</td>
+    <td>{{ serwis.czynnosc }}
+      {% if serwis.sprzet %}
+      [{{ serwis.sprzet.nazwa }} <a href="{% url 'sprzet-detail' serwis.sprzet.pk %}"><span class="glyphicon glyphicon-search"></span></a>]
+      {% endif %}
+    </td>
     <td>
       <a href="{% url 'serwis-update' serwis.pk %}"><button class="btn btn-primary">edytuj</button></a>
       <a href="{% url 'serwis-delete' serwis.pk %}"><button class="btn btn-warning">usuń</button></a>

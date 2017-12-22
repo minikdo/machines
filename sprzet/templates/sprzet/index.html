@@ -16,7 +16,6 @@
     <th>OS</th>
     <th>Kernel</th>
     <th>CPU</th>
-    <th>Cores</th>
     <th>Arch</th>
     <th>Mem</th>
     <th>HDD</th>
@@ -30,7 +29,7 @@
   <tr>
     <td><a href="{{ komp.pk }}/">{{ komp.pk }}</a></td>
     <td>{{ komp.name }}</td>
-    <td>{{ komp.datetime }}</td>
+    <td class="nowrap">{{ komp.datetime }}</td>
     <td>{{ komp.form }}</td>
     <td>{{ komp.bios }}</td>
     <td>{{ komp.prod }}</td>
@@ -38,7 +37,6 @@
     <td>{{ komp.OS }}</td>
     <td>{{ komp.kernel }}</td>
     <td>{{ komp.CPU }}</td>
-    <td>{{ komp.cores }}</td>
     <td>{{ komp.arch }}</td>
     <td>{{ komp.mem }}</td>
     <td>{{ komp.HDD }}</td>
