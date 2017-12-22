@@ -10,3 +10,4 @@ __pycache__/
 .\#*
 \#*\#
 .db_migration/*
+machines/settings.py

@@ -46,11 +46,9 @@
 </table>
 
 
+
+{% if kompy.sprzet_set.all %}
 <h1>Sprzęt</h1>
-
-<a href="{% url 'kompysprzet-create' %}?komp_id={{ kompy.pk }}"><button class="btn btn-success" style="margin-bottom: 10px;"><span class="glyphicon glyphicon-plus"></span> dodaj sprzęt</button></a>
-
-{% if kompy.kompysprzet_set.all %}
 <table class="table table-striped">
   <tr>
     <th>id</th>
@@ -60,14 +58,14 @@
     <th>cena</th>
     <th>firma</th>
   </tr>
-  {% for sprzet in kompy.kompysprzet_set.all %}
+  {% for sprzet in kompy.sprzet_set.all %}
   <tr>
-    <td>{{ sprzet.sprzet.pk }}</td>
-    <td>{{ sprzet.sprzet.data }}</td>
-    <td>{{ sprzet.sprzet.typ }}</td>
-    <td>{{ sprzet.sprzet.nazwa }}</td>
-    <td>{{ sprzet.sprzet.cena }}</td>
-    <td>{{ sprzet.sprzet.firma }}</td>
+    <td>{{ sprzet.pk }}</td>
+    <td>{{ sprzet.data }}</td>
+    <td>{{ sprzet.typ }}</td>
+    <td>{{ sprzet.nazwa }}</td>
+    <td>{{ sprzet.cena }}</td>
+    <td>{{ sprzet.firma }}</td>
   </tr>
   {% endfor %}
 </table>

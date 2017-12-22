@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .models import Kompy, Serwis, Sprzet, SprzetTyp, KompySprzet
+from .models import Kompy, Serwis, Sprzet, SprzetTyp
 from django.urls import reverse_lazy, reverse
 import time
 
@@ -92,7 +92,7 @@ class SprzetCreate(CreateView):
     Dodawanie sprzętu
     """
     model = Sprzet
-    fields = ['data', 'typ', 'nazwa', 'cena', 'firma', 'numer']
+    fields = ['komp', 'data', 'typ', 'nazwa', 'cena', 'firma', 'numer']
 
     def get_initial(self, **kwargs):
         return {'data': time.strftime('%Y-%m-%d')}
@@ -103,7 +103,7 @@ class SprzetUpdate(UpdateView):
     Uaktualnienie sprzętu
     """
     model = Sprzet
-    fields = ['data', 'typ', 'nazwa', 'cena', 'firma', 'numer']
+    fields = ['komp', 'data', 'typ', 'nazwa', 'cena', 'firma', 'numer']
     
     
 class SprzetDelete(DeleteView):
@@ -113,14 +113,4 @@ class SprzetDelete(DeleteView):
     model = Sprzet
     success_url = reverse_lazy('sprzet-index')
     
-
-class KompySprzetCreate(CreateView):
-    """
-    Łączenie hostów ze sprzętem
-    """
-    model = KompySprzet
-    fields = ['komp', 'sprzet']
-    
-    def get_initial(self, **kwargs):
-        return {'komp': self.request.GET.get("komp_id", None)}
 

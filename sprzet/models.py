@@ -41,6 +41,7 @@ class Serwis(models.Model):
 
 
 class Sprzet(models.Model):
+    komp = models.ForeignKey('Kompy', blank=True, null=True, on_delete=models.CASCADE)
     data = models.DateField()
     typ = models.ForeignKey('SprzetTyp', on_delete=models.CASCADE)
     nazwa = models.CharField(max_length=150, null=True)
@@ -62,10 +63,4 @@ class SprzetTyp(models.Model):
         return self.nazwa
 
 
-class KompySprzet(models.Model):
-    komp = models.ForeignKey('Kompy', on_delete=models.CASCADE)
-    sprzet = models.ForeignKey('Sprzet', on_delete=models.CASCADE)
-
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.komp_id})
     

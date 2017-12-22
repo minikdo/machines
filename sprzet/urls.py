@@ -14,5 +14,4 @@ urlpatterns = [
     path('sprzety/add/', views.SprzetCreate.as_view(), name='sprzet-create'),
     path('sprzety/<int:pk>/del/', views.SprzetDelete.as_view(), name='sprzet-delete'),
     path('sprzety/<int:pk>/update/', views.SprzetUpdate.as_view(), name='sprzet-update'),
-    path('kompysprzet/add/', views.KompySprzetCreate.as_view(), name='kompysprzet-create'),
 ]
