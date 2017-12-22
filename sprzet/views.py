@@ -8,6 +8,9 @@ import time
 
 
 class IndexView(generic.ListView):
+    """
+    Lista hostów
+    """
     template_name = 'sprzet/index.html'
     context_object_name = 'kompy'
     
@@ -16,11 +19,17 @@ class IndexView(generic.ListView):
     
 
 class DetailView(generic.DetailView):
+    """
+    Szczegóły hosta
+    """
     model = Kompy
     template_name = 'sprzet/detail.html'
 
 
 class SerwisIndexView(generic.ListView):
+    """
+    Lista czynności serwisowych
+    """
     template_name = 'sprzet/serwis_index.html'
     context_object_name = 'serwisy'
     model = Serwis
@@ -36,7 +45,8 @@ class SerwisCreate(CreateView):
     fields = ['komp', 'data', 'czynnosc', 'sprzet']
 
     def get_initial(self, **kwargs):
-        return {'komp': self.request.GET.get("komp_id", None), 'data': time.strftime('%Y-%m-%d')}
+        return {'komp': self.request.GET.get("komp_id", None),
+                'data': time.strftime('%Y-%m-%d')}
 
 
 class SerwisUpdate(UpdateView):
@@ -59,6 +69,9 @@ class SerwisDelete(DeleteView):
 
 
 class SprzetIndexView(generic.ListView):
+    """
+    Lista sprzętu
+    """
     template_name = 'sprzet/sprzet_index.html'
     context_object_name = 'sprzet'
     model = Sprzet
@@ -67,13 +80,16 @@ class SprzetIndexView(generic.ListView):
 
 
 class SprzetDetailView(generic.DetailView):
+    """
+    Widok szczegółowy sprzętu
+    """
     model = Sprzet
     template_name = 'sprzet/sprzet_detail.html'
 
 
 class SprzetCreate(CreateView):
     """
-    Dodawanie czynności serwisowej
+    Dodawanie sprzętu
     """
     model = Sprzet
     fields = ['data', 'typ', 'nazwa', 'cena', 'firma', 'numer']
@@ -84,7 +100,7 @@ class SprzetCreate(CreateView):
     
 class SprzetUpdate(UpdateView):
     """
-    Uaktualnienie czynności serwisowej
+    Uaktualnienie sprzętu
     """
     model = Sprzet
     fields = ['data', 'typ', 'nazwa', 'cena', 'firma', 'numer']
@@ -92,7 +108,7 @@ class SprzetUpdate(UpdateView):
     
 class SprzetDelete(DeleteView):
     """
-    Usuwanie czynności serwisowej
+    Usuwanie sprzętu
     """
     model = Sprzet
     success_url = reverse_lazy('sprzet-index')
